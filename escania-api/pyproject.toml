@@ -1,0 +1,17 @@
+[project]
+name = "EscanIA"
+version = "0.1.0"
+description = "EscanIA es un sistema de escaneo y análisis inteligente de redes que combina el poder del escaneo activo con Nmap y la inteligencia artificial para detectar vulnerabilidades, analizar patrones y generar reportes automatizados en tiempo real."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "apscheduler>=3.11.0",
+    "black>=25.1.0",
+    "fastapi[standard]>=0.115.8",
+    "firebase-admin>=6.6.0",
+    "openai>=1.65.4",
+    "pydantic-settings>=2.8.1",
+    "python-nmap>=0.7.1",
+    "ruff>=0.9.6",
+    "sqlmodel>=0.0.22",
+]

@@ -1,0 +1,9 @@
+escania-ui/node_modules
+.git
+.gitignore
+*.md
+dist
+escania-api/.ruff_cache
+escania-api/*.db
+escania-api/.venv
+escania-ui/.next

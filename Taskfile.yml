@@ -1,0 +1,22 @@
+# https://taskfile.dev
+
+version: '3'
+tasks:
+  api:
+    dir: escania-api
+    dotenv:
+      - .env
+    cmds:
+      - uv run uvicorn escania.main:app --reload --port $API_PORT
+
+  ui:
+    dir: escania-ui
+    dotenv:
+      - .env
+    cmds:
+      - bun run start
+
+  run:
+    deps:
+      - api
+      - ui

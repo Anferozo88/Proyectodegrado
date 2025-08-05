@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  escania-api:
+    build:
+      context: ./escania-api
+      dockerfile: Dockerfile
+    container_name: escania-api
+    restart: unless-stopped
+    ports:
+      - "${API_PORT:-8000}:8000"
+    env_file:
+      - ./escania-api/.env
+    volumes:
+      - escania-data:/app/data
+    networks:
+      - escania-network
+      - host-network 
+    cap_add:
+      - NET_ADMIN    
+      - NET_RAW      
+    security_opt:
+      - apparmor:unconfined  
+
+  escania-ui:
+    build:
+      context: ./escania-ui
+      dockerfile: Dockerfile
+    container_name: escania-ui
+    restart: unless-stopped
+    ports:
+      - "${UI_PORT:-3000}:3000"
+    depends_on:
+      - escania-api
+    networks:
+      - escania-network
+
+networks:
+  escania-network:
+    internal: false
+  host-network:
+    driver: bridge
+
+volumes:
+  escania-data:
